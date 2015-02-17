@@ -1,4 +1,4 @@
-#!/bin/sh -x
+#!/bin/sh
 
 sleep 30
 sudo apt-get update
