@@ -1,0 +1,23 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "app_name" : "suripu-service",
+    "app_version" : "0.2.62"
+  },
+  "builders": [{
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-1",
+    "source_ami": "ami-be0f60d6",
+    "instance_type": "m3.medium",
+    "ssh_username": "ubuntu",
+    "ami_name": "{{user `app_name`}}-{{user `app_version`}}-{{isotime \"2006-01-02-15-04-05\"}}"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "script": "configure.sh",
+    "environment_vars" : ["APP_VERSION={{user `app_version`}}","APP_NAME={{user `app_name`}}"]
+  }]
+}
