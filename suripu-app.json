@@ -3,7 +3,7 @@
     "aws_access_key": "",
     "aws_secret_key": "",
     "app_name" : "suripu-app",
-    "app_version" : "0.2.71"
+    "app_version" : "0.2.77"
   },
   "builders": [{
     "type": "amazon-ebs",
