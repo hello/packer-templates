@@ -2,8 +2,8 @@
   "variables": {
     "aws_access_key": "",
     "aws_secret_key": "",
-    "app_name" : "suripu-workers",
-    "app_version" : "0.2.64"
+    "app_name" : "",
+    "app_version" : ""
   },
   "builders": [{
     "type": "amazon-ebs",
