@@ -3,7 +3,7 @@
 
 while true
 do
-  read -p "$(echo 'Which app do you want to build? \n [1] suripu-app \n [2] suripu-service \n\n > ')" RESP
+  read -p "$(echo 'Which app do you want to build? \n [1] suripu-app \n [2] suripu-service \n [3] suripu-workers \n\n > ')" RESP
   case $RESP in
     [1])
       APP="suripu-app"
@@ -15,8 +15,13 @@ do
       echo "Building suripu-service"
       break
       ;;
+    [3])
+      APP="suripu-workers"
+      echo "Building suripu-workers"
+      break
+      ;;
     *)
-      echo "Please enter 1 or 2"
+      echo "Please enter 1, 2 or 3"
   esac
 done
 
@@ -38,9 +43,12 @@ echo "\tversion: $VERSION\n"
 
 read -p "$(echo 'Specify ami-id \n > ')" AMI
 
-if [ $APP == "suripu-app" ]
+if [ $APP == "suripu-app" ];
 then
   SG="sg-d28624b6"
+elif [ $APP == "suripu-workers" ];
+then
+  SG="sg-7054d714"
 else
   SG="sg-11ac0e75"
 fi
@@ -55,7 +63,7 @@ aws autoscaling create-launch-configuration \
 --security-groups $SG \
 --instance-type m3.medium \
 --instance-monitoring Enabled=true \
---iam-instance-profile suripu-app \
+--iam-instance-profile $APP \
 --associate-public-ip-address
 
 
