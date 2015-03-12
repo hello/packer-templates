@@ -10,6 +10,9 @@ PKG_NAME=${APP_NAME}_${APP_VERSION}_amd64.deb
 aws s3 cp s3://hello-deploy/pkg/${APP_NAME}/$PKG_NAME /tmp/
 sudo dpkg -i /tmp/$PKG_NAME
 
+
+aws s3 cp s3://hello-deploy/pkg/kenko/kenko_latest_amd64.deb /tmp/
+sudo dpkg -i /tmp/kenko_latest_amd64.deb
 # s3cmd get s3://hello-deploy/configs/com/hello/suripu/suripu-app/$VERSION/suripu-app.prod.yml . --force
 # s3cmd get s3://hello-deploy/configs/com/hello/suripu/suripu-service/$VERSION/suripu-service.prod.yml . --force
 # s3cmd get s3://hello-deploy/configs/com/hello/suripu/suripu-workers/$VERSION/pillscorer.prod.yml . --force
