@@ -4,6 +4,7 @@ sleep 30
 sudo apt-get update
 sudo apt-get install -y htop
 sudo apt-get install -y openjdk-7-jre
+sudo apt-get install -y ntp
 # sudo apt-get install -y nginx
 
 PKG_NAME=${APP_NAME}_${APP_VERSION}_amd64.deb
