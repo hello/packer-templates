@@ -33,7 +33,7 @@ echo "Summary: $APP\n"
 echo "\tapp: $APP\n"
 echo "\tversion: $VERSION\n"
 
- packer build \
+packer build \
  -var 'aws_access_key=AKIAII76K2Z5IMMJYEIA' \
  -var 'aws_secret_key=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' \
  -var "app_name=$APP" \
