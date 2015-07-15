@@ -43,25 +43,29 @@ packer build \
 
 read -p "$(echo 'Specify ami-id \n > ')" AMI
 
+INSTANCE_TYPE="m3.medium"
+
 if [ $APP == "suripu-app" ];
 then
   SG="sg-d28624b6"
 elif [ $APP == "suripu-workers" ];
 then
   SG="sg-7054d714"
+  INSTANCE_TYPE="c3.xlarge"
 else
   SG="sg-11ac0e75"
 fi
 
 echo $APP
 echo $SG
+echo $INSTANCE_TYPE
 
 aws autoscaling create-launch-configuration \
 --launch-configuration-name $APP-prod-$VERSION \
 --image-id $AMI \
 --key-name vpc-prod \
 --security-groups $SG \
---instance-type m3.medium \
+--instance-type $INSTANCE_TYPE \
 --instance-monitoring Enabled=true \
 --iam-instance-profile $APP \
 --associate-public-ip-address
