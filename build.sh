@@ -3,7 +3,7 @@
 
 while true
 do
-  read -p "$(echo 'Which app do you want to build? \n [1] suripu-app \n [2] suripu-service \n [3] suripu-workers \n\n > ')" RESP
+  read -p "$(echo 'Which app do you want to build? \n [1] suripu-app \n [2] suripu-service \n [3] suripu-workers \n [4] suripu-queue \n\n > ')" RESP
   case $RESP in
     [1])
       APP="suripu-app"
@@ -20,8 +20,13 @@ do
       echo "Building suripu-workers"
       break
       ;;
+    [4])
+      APP="suripu-queue"
+      echo "Building suripu-queue"
+      break
+      ;;
     *)
-      echo "Please enter 1, 2 or 3"
+      echo "Please enter 1, 2, 3 or 4"
   esac
 done
 
