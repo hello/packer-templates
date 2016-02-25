@@ -15,5 +15,11 @@ pip install --user awscli
 aws configure
 ````
 
+3. Install jq for JSON parsing
+
+````
+brew install jq
+````
+
 ./build.sh
 
