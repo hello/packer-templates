@@ -1,5 +1,6 @@
 #!/bin/sh -x
 
+# RUN ONCE
 
 VERSION=1.3
 
@@ -27,5 +28,5 @@ EOF
 fpm --force -s dir -C $TEMP_DIR -t deb --name "papertrail_taimurain" --version $VERSION --config-files etc/papertrail .
 
 aws s3 cp papertrail*.deb s3://hello-deploy/pkg/papertrail/
-# rm -rf $TEMP_DIR
-# rm *.deb
+rm -rf $TEMP_DIR
+rm *.deb
