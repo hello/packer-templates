@@ -19,8 +19,9 @@ aws s3 cp s3://hello-deploy/packages/com/hello/${APP_NAME}/${APP_VERSION}/$PKG_N
 sudo dpkg -i /tmp/$PKG_NAME
 
 # papertrail support only for workers now
-aws s3 cp s3://hello-deploy/pkg/papertrail/papertrail-taimurain_1.3_amd64.deb /tmp/ --region us-east-1
-sudo dpkg -i /tmp/papertrail-taimurain_1.3_amd64.deb
+PAPERTRAIL_PACKAGE=papertrail-taimurain-16_1.4_amd64.deb
+aws s3 cp s3://hello-deploy/pkg/papertrail/${PAPERTRAIL_PACKAGE} /tmp/ --region us-east-1
+sudo dpkg -i /tmp/${PAPERTRAIL_PACKAGE}
 
 # 
 
