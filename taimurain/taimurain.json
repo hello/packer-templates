@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "app_name" : "",
+    "app_version" : ""
+  },
+  "builders": [{
+    "vpc_id": "vpc-961464f3",
+    "ssh_private_ip": false,
+    "associate_public_ip_address": true,
+    "subnet_id": "subnet-838a3bf5",
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "us-east-1",
+    "source_ami": "ami-046d8069",
+    "instance_type": "c4.xlarge",
+    "ssh_username": "ubuntu",
+    "ami_name": "{{user `app_name`}}-{{user `app_version`}}-{{isotime \"2006-01-02-15-04-05\"}}"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "script": "configure_taimurain.sh",
+    "environment_vars" : ["APP_VERSION={{user `app_version`}}","APP_NAME={{user `app_name`}}"]
+  }]
+}
