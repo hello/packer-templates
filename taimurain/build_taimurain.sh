@@ -1,7 +1,7 @@
 #!/bin/sh
 
-APP="taimurain"
-echo "Building Taimurain..."
+APP="taimurain-2"
+echo "Building Taimurain"
 
 read -p "$(echo 'Which version do you want to build?\n> ')" VERSION
 
